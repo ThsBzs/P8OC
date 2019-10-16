@@ -59,7 +59,7 @@ describe('controller', function () {
 	});
 
 	it('should show entries on start-up', function () {
-		//Rédigé, fonctionne
+		//Rédigé, fonctionne -- OK
 		var todo = {title: 'my todo'};
 		setUpModel([todo]);
 
@@ -80,7 +80,7 @@ describe('controller', function () {
 		});
 
 		it('should show all entries without "all" route', function () {
-			//Rédigé, fonctionne
+			//Rédigé, fonctionne -- OK
 			var todo = {title: 'my todo'};
 			setUpModel([todo]);
 
@@ -131,7 +131,7 @@ describe('controller', function () {
 	});
 
 	it('should check the toggle all button, if all todos are completed', function () {
-		//Rédigé, fonctionne
+		//Rédigé, fonctionne -- OK
 		setUpModel([{title: 'my todo', completed: true}]);
 
 		subject.setView('');
@@ -142,7 +142,7 @@ describe('controller', function () {
 	});
 
 	it('should set the "clear completed" button', function () {
-		//Rédigé, fonctionne
+		//Rédigé, fonctionne -- OK
 		var todo = {id: 42, title: 'my todo', completed: true};
 		setUpModel([todo]);
 
@@ -155,7 +155,9 @@ describe('controller', function () {
 	});
 
 	it('should highlight "All" filter by default', function () {
-		//Rédigé, fonctionne
+		//Rédigé, fonctionne -- OK
+		setUpModel([{title: 'my todo', completed: true}]);
+
 		subject.setView('');
 
 		expect(view.render).toHaveBeenCalledWith('setFilter', '')
@@ -163,12 +165,13 @@ describe('controller', function () {
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
-		//Rédigé, fonctionne.
-		var todo = {id: 42, title: 'my todo', completed: false};
-		setUpModel([todo]);
-		subject.showActive();
+		//Rédigé et corrigé, fonctionne --OK
 
-		expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+		setUpModel([]);
+
+		subject.setView('#/active'); 
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', 'active');
 	});
 
 	describe('toggle all', function () {
@@ -201,15 +204,6 @@ describe('controller', function () {
 			setUpModel([]);
 
 			subject.setView('');
-
-			view.render.calls.reset();
-			model.read.calls.reset();
-			model.read.and.callFake(function (callback) {
-				callback([{
-					title: 'a new todo',
-					completed: false
-				}]);
-			});
 
 			view.trigger('newTodo', 'a new todo');
 
