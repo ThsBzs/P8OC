@@ -84,9 +84,9 @@
 	    var newId = Date.now();  
 	    
 
-        for (var i = 0; i < 6; i++) {
+        /*for (var i = 0; i < 6; i++) {
      		newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
+		}*/
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {
