@@ -162,7 +162,9 @@
 			items = data;
 		});
 
-		/*items.forEach(function(item) {
+		/*
+		Mise en commentaire de ce console.log(), n'est pas utile en production
+		items.forEach(function(item) {
 			if (item.id === id) {
 				console.log("Element with ID: " + id + " has been removed.");
 			}

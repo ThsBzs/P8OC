@@ -84,7 +84,9 @@
 	    var newId = Date.now();  
 	    
 
-        /*for (var i = 0; i < 6; i++) {
+        /*
+		Cette version pose problème : risque d'attribution d'un même ID à deux todos différents
+        for (var i = 0; i < 6; i++) {
      		newId += charset.charAt(Math.floor(Math.random() * charset.length));
 		}*/
 
